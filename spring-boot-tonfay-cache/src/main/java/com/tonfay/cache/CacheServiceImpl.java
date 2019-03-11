@@ -3,12 +3,13 @@ package com.tonfay.cache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import com.alibaba.fastjson.JSON;
 import com.tonfay.cache.annotation.GoCacheable;
 import com.tonfay.cache.config.MsConfigProperties;
 import com.tonfay.cache.model.enums.CacheMode;
-import com.tonfay.cache.redis.RedisService;
 import com.tonfay.cache.unsafe.ClassIntrospector;
+import com.tonfay.redis.service.RedisService;
 
 public class CacheServiceImpl implements CacheService {
 
