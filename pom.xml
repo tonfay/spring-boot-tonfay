@@ -20,6 +20,7 @@
 		<java.version>1.8</java.version>
 	</properties>
 	<modules>
+		<module>spring-boot-tonfay-common</module>
 		<module>spring-boot-tonfay-redis-starter</module>
 		<module>spring-boot-tonfay-cache</module>
 		<module>spring-cloud-tonfay-submit</module>
@@ -39,6 +40,11 @@
 			<dependency>
 	            <groupId>com.tonfay</groupId>
 	            <artifactId>spring-boot-tonfay-redis-starter</artifactId>
+	            <version>${project.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>com.tonfay</groupId>
+	            <artifactId>spring-boot-tonfay-common</artifactId>
 	            <version>${project.version}</version>
 	        </dependency>
 		</dependencies>

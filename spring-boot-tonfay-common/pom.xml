@@ -4,13 +4,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
+	 <parent>
 		<groupId>com.tonfay</groupId>
 		<artifactId>spring-boot-tonfay</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-	<artifactId>spring-boot-tonfay-cache</artifactId>
-	<name>spring-boot-tonfay-cache</name>
+	</parent> 
+	<artifactId>spring-boot-tonfay-common</artifactId>
+	<name>spring-boot-tonfay-common</name>
 	<packaging>jar</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,10 +21,6 @@
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
 		<dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
@@ -38,14 +34,6 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.tonfay</groupId>
-            <artifactId>spring-boot-tonfay-redis-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.tonfay</groupId>
-            <artifactId>spring-boot-tonfay-common</artifactId>
         </dependency>
 	</dependencies>
 </project>

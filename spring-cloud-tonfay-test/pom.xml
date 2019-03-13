@@ -4,13 +4,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
+	 <parent>
 		<groupId>com.tonfay</groupId>
-		<artifactId>spring-boot-tonfay</artifactId>
+		<artifactId>spring-cloud-tonfay-test</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-	<artifactId>spring-boot-tonfay-cache</artifactId>
-	<name>spring-boot-tonfay-cache</name>
+	</parent> 
+	<artifactId>spring-cloud-tonfay-submit</artifactId>
+	<name>spring-cloud-tonfay-submit</name>
 	<packaging>jar</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,12 +40,15 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.tonfay</groupId>
-            <artifactId>spring-boot-tonfay-redis-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.tonfay</groupId>
-            <artifactId>spring-boot-tonfay-common</artifactId>
-        </dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<exclusions>
+                <exclusion>
+                    <!-- 使用了log4j2，就要将spring-boot-starter-logging排除 -->
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+		</dependency>
 	</dependencies>
 </project>
