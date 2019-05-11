@@ -1,0 +1,40 @@
+server:
+  port: 8080
+  context-path: /
+  tomcat:
+    max-threads: 800
+    accept-count: 2000
+    min-spare-threads: 10
+  compression:
+    enabled: true
+    mime-types:
+    - text/html
+    - text/plain
+    - text/css
+    - text/xml
+    - application/xml
+    - application/json
+spring:
+  profiles:
+    active: local
+  http:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  application:
+    name: spring-cloud-tonfay-gen
+      
+  freemarker:
+      allow-request-override: false
+      cache: false
+      check-template-location: true
+      charset: UTF-8
+      content-type: text/html; charset=utf-8
+      expose-request-attributes: false
+      expose-session-attributes: false
+      expose-spring-macro-helpers: false
+      suffix: .ftl
+      template-loader-path: classpath:/templates_bs/
+gofun:
+    templateDir: /data/project/spring-cloud-tonfay-gen/template/
+    outDir : /data/project/spring-cloud-tonfay-gen/testrepid/

@@ -1,0 +1,121 @@
+server:
+  port: 9667
+  context-path: /
+  tomcat:
+    max-threads: 800
+    accept-count: 2000
+    min-spare-threads: 10
+    
+spring:
+  profiles:
+    active: prod  ##设置logback-spring中日志显示
+  application:
+    name: gofun-ms-${project.name}-mq
+  datasource:
+    name: gofun-ms-${project.name}-mq_DS
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://172.17.6.127:3306/ms_order?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&failOverReadOnly=false
+    username: gofun
+    password: USDreZKs2@KFnw*z
+    hikari:
+      poolName: hikari数据库连接池
+      maximumPoolSize: 200
+      minimum-idle: 5
+      autoCommit: true
+      idleTimeout: 600000  #连接空闲时间
+      maxLifetime: 1800000 #一个连接的存活时长ms 30分钟
+      connectionTimeout: 10000 #获取连接最大等待时长 30s
+<#if components?? && components.mongo??>
+  data:
+    mongodb:
+      uri: mongodb://username:password@mongouri-master.shouqiev.net:3717,mongouri-slave.shouqiev.net:3717/demo?readpreference=secondaryPreferred
+      option:
+        #链接超时的毫秒数,0表示不超时,此参数只用在新建一个新链接时，推荐配置10,000.
+        connect-timeout: 3000
+        #当链接空闲时,空闲线程池中最大链接数
+        min-connection-per-host: 1
+        #对mongo实例来说，每个host允许链接的最大链接数,这些链接空闲时会放入池中,如果链接被耗尽，任何请求链接的操作会被阻塞等待链
+        max-connection-per-host: 200
+        #连接空闲时间
+        max-connection-idle-time: 600000
+        #一个连接的存活时长ms 30分钟
+        max-connection-life-time: 1800000
+        #一个线程等待链接可用的最大等待毫秒数
+        max-wait-time: 30000
+        #此参数表示socket I/O读写超时时间,推荐为不超时，即 0    Socket.setSoTimeout(int)
+        socket-timeout: 60000
+        #该标志用于控制socket保持活动的功能，通过防火墙保持连接活着,默认 flase
+</#if>
+<#if components?? && components.redis??>
+  redis:
+      host: redis.shouqiev.net
+      password: 3QpT%LA5
+      port: 6379
+      pool.max-active: 200
+      pool.max-idle: 20
+      pool.min-idle: 5
+      pool.max-wait: 1000
+      timeout: 3000
+      database: 2
+</#if>
+  boot:
+    admin:
+      client:
+        prefer-ip: true
+      url: http://msadmin.shouqiev.net:8752
+
+feign:
+  compression:
+    request:
+      mime-types:
+      - text/xml
+      - application/xml
+      - application/json
+      min-request-size: 1024
+  hystrix:
+    enabled: false 
+
+ribbon:
+  ReadTimeout: 10000 #请求处理的超时时间  
+  ConnectTimeout: 2000  #请求连接的超时时间  
+  MaxAutoRetriesNextServer: 1 #重试其他实例的最大次数，不包括第一次调用的实例
+  MaxAutoRetries: 0 #当前实例最大重试次数，不含第一次调用。
+  OkToRetryOnAllOperations: true  #对所有操作请求都进行重试
+info:
+  app:
+    name: "@project.name@" #从pom.xml中获取
+    version: "@project.version@"
+
+security:
+  user:
+    name: gofun
+    password: 1qaz@WSX
+eureka:
+  client:
+    healthcheck: true
+    serviceUrl:
+      defaultZone: http://eureka1.shouqiev.net:8753/eureka/,http://eureka2.shouqiev.net:8753/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+    preferIpAddress: true
+    instanceId: ${r'${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}'}
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health
+    homePageUrlPath: /
+
+<#if components?? && (components.mq?? || components.cache??)>
+<#if components?? && (components.mq??)>
+# MQ
+gofun:
+  mq:
+    namesrv-addr: mq.shouqiev.net:9876;mq1.shouqiev.net:9876
+    skip-message: 
+      enable: true      #是否开启,缺省值为false(关)
+      timeout: 259200000‬   #N ms前的消息直接丢弃,缺省值为3天(3 * 24 * 60 * 60 * 1000)
+</#if>
+<#if components?? && (components.cache??)>
+  cache-enabled: true
+</#if>
+</#if>

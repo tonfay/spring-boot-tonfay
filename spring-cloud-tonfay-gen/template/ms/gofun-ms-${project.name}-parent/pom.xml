@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.gofun.ms</groupId>
+	<artifactId>gofun-ms-${project.name}-parent</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>${r'${project.artifactId}'}</name>
+	<modules>
+		<module>gofun-ms-${project.name}-service</module>
+		<module>gofun-ms-${project.name}-interface</module>
+		<module>gofun-ms-${project.name}-model</module>
+	</modules>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.12.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version><#if spring??>${spring.cloud.version}</#if></version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.gofun.ms</groupId>
+				<artifactId>gofun-ms-${project.name}-model</artifactId>
+				<version>${r'${project.version}'}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.gofun.ms</groupId>
+				<artifactId>gofun-ms-${project.name}-service</artifactId>
+				<version>${r'${project.version}'}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.gofun.ms</groupId>
+				<artifactId>gofun-ms-common-service</artifactId>
+				<version>1.0.4-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.gofun.ms</groupId>
+				<artifactId>gofun-ms-common</artifactId>
+				<version>1.0.4-SNAPSHOT</version>
+			</dependency>
+			<#if components?? && components.mq??>
+			<dependency>
+				<groupId>com.gofun.ms</groupId>
+				<artifactId>gofun-ms-mq-starter</artifactId>
+				<version>1.0.4-SNAPSHOT</version>
+			</dependency>
+			</#if>
+			<#if components?? && components.mongo??>
+			<dependency>
+				<groupId>com.gofun.ms</groupId>
+				<artifactId>gofun-ms-mongo-starter</artifactId>
+				<version>1.0.4-SNAPSHOT</version>
+			</dependency>
+			</#if>
+			<#if components?? && components.clean_cache??>
+			<dependency>
+				<groupId>com.gofun.ms</groupId>
+				<artifactId>gofun-ms-cacheM-starter</artifactId>
+				<version>1.0.4-SNAPSHOT</version>
+				<exclusions>
+					<exclusion>
+						<!-- 使用了log4j2，就要将spring-boot-starter-logging排除 -->
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-starter-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			</#if>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- 生成SQL的插件的jar在私服上 -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>nexus_gofun</id>
+			<name>nexus_gofun</name>
+			<url>http://mvn.shouqiev.com:8099/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	<repositories>
+		<repository>
+			<id>Nexus</id>
+			<name>Nexus Public Repository</name>
+			<url>http://mvn.shouqiev.com:8099/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
+
+
+</project>

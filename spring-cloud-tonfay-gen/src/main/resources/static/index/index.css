@@ -1,0 +1,43 @@
+		.tagsinput-primary {
+			margin-bottom: 18px;
+		}
+		.tagsinput-primary .bootstrap-tagsinput {
+			border-color: #337ab7;
+			margin-bottom: 0;
+		}
+		.bootstrap-tagsinput-btn {
+			background: #337ab7;
+			border: 0;
+			color: #fff;
+			padding: 10px;
+			border-radius: 5px;
+			margin-top: 10px;
+		}
+		.bootstrap-tagsinput-success-btn {
+			background: #5cb85c;
+			border: 0;
+			color: #fff;
+			padding: 10px;
+			border-radius: 5px;
+			margin-top: 10px;
+		}
+		.bootstrap-tagsinput{
+			width: 100%;
+		}
+		.bootstrap-tagsinput .label-info {
+			border-radius: 4px;
+			background-color: #337ab7;
+			color: #fff;
+			font-size: 13px;
+			cursor: pointer;
+			display: inline-block;
+			position: relative;
+			vertical-align: middle;
+			overflow: hidden;
+			margin: 0 5px 5px 0;
+			padding: 6px 10px 6px 14px;
+			transition: .25s linear;
+		}
+		.bootstrap-tagsinput input {
+			width: 100%;
+		}

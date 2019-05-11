@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<version>1.0-SNAPSHOT</version>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>gofun-ms-${project.name}-service</artifactId>
+	<parent>
+		<artifactId>gofun-ms-${project.name}-parent</artifactId>
+		<groupId>com.gofun.ms</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.gofun.ms</groupId>
+			<artifactId>gofun-ms-common-service</artifactId>
+		</dependency>
+
+
+		<!-- model -->
+		<dependency>
+			<groupId>com.gofun.ms</groupId>
+			<artifactId>gofun-ms-${project.name}-model</artifactId>
+		</dependency>
+
+		<#if components?? && components.mq??>
+		<dependency>
+			<groupId>com.gofun.ms</groupId>
+			<artifactId>gofun-ms-mq-starter</artifactId>
+		</dependency>
+		</#if>
+
+		<#if components?? && components.mongo??>
+		<!-- 增加mongodb支持 -->
+		<dependency>
+			<groupId>com.gofun.ms</groupId>
+			<artifactId>gofun-ms-mongo-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<exclusions>
+				<exclusion>
+					<!-- 使用了log4j2，就要将spring-boot-starter-logging排除 -->
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		</#if>
+		<#if components?? && components.clean_cache??>
+		<dependency>
+			<groupId>com.gofun.ms</groupId>
+			<artifactId>gofun-ms-cacheM-starter</artifactId>
+			<exclusions>
+				<exclusion>
+					<!-- 使用了log4j2，就要将spring-boot-starter-logging排除 -->
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		</#if>
+	</dependencies>
+
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<url>http://mvn.shouqiev.com:8099/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://mvn.shouqiev.com:8099/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<repositories>
+		<repository>
+			<id>Nexus</id>
+			<name>Nexus Public Repository</name>
+			<url>http://mvn.shouqiev.com:8099/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
+	<build>
+		<plugins>
+			<!-- 要将源码放上去，需要加入这个插件 -->
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<attach>true</attach>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
