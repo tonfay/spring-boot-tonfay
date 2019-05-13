@@ -11,7 +11,7 @@ fatal： 级别比较高了。重大错误，这种级别你可以直接停止�
 <Configuration status="OFF">
     <!-- 定义日志存放目录 -->
     <properties>
-        <property name="instance">gofun-ms-${project.name}-service</property>
+        <property name="instance">gofun-ms-${project.name}-mq</property>
         <property name="logPath">/data/log/</property>
         <!-- 输出日志的格式 -->
         <!--
