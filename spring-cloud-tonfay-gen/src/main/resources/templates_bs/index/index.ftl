@@ -21,7 +21,7 @@
 <body>
 		<div class="container">
 			<div class="row" style="padding: 20px 0">
-				<h2>THIS IS GEN</h2>
+				<h2>GoFun Generator</h2>
 			</div>
 			<div class="row form-group">
 				<!-- <label class="control-label col-lg-1" for="name">项目名称</label> -->

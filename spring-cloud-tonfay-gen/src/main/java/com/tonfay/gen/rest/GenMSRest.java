@@ -65,6 +65,10 @@ public class GenMSRest {
 			//do
 			execute(root, templateDir, outDir);
 			
+			//删除无用文件夹
+//			PathUtil.delFile(outDir+"");
+			
+			
 			//压缩
 			ByteArrayOutputStream tmp = new ByteArrayOutputStream();
 			ZipUtil.toZip(outDir, tmp, true);
@@ -78,6 +82,12 @@ public class GenMSRest {
 		}
 	}
 	
+	/**
+	 * 支持的组件列表
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(HttpServletResponse response) throws IOException {
 		String list = ComponentsEnum.values().toString();
