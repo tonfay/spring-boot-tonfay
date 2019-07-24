@@ -23,6 +23,7 @@
 		</dependency>
 	</dependencies>
 
+	<!-- 项目打包成库文件后要上传到什么库地址 -->
 	<distributionManagement>
 		<repository>
 			<id>nexus-releases</id>
@@ -33,6 +34,7 @@
 			<url>http://mvn.shouqiev.com:8099/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
+	<!-- 从什么库地址可以下载项目依赖的库文件 -->
 	<repositories>
 		<repository>
 			<id>Nexus</id>

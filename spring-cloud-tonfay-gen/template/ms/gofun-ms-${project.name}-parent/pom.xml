@@ -14,6 +14,11 @@
 		<module>gofun-ms-${project.name}-service</module>
 		<module>gofun-ms-${project.name}-interface</module>
 		<module>gofun-ms-${project.name}-model</module>
+		<#if components?? && (components.mq?? || components.cache??)>
+			<#if components?? && (components.mq??)>
+		<module>gofun-ms-${project.name}-mq</module>
+			</#if>
+		</#if>
 	</modules>
 
 	<parent>
@@ -63,13 +68,11 @@
 				<artifactId>gofun-ms-common</artifactId>
 				<version>1.0.4-SNAPSHOT</version>
 			</dependency>
-			<#if components?? && components.mq??>
 			<dependency>
 				<groupId>com.gofun.ms</groupId>
 				<artifactId>gofun-ms-mq-starter</artifactId>
 				<version>1.0.4-SNAPSHOT</version>
 			</dependency>
-			</#if>
 			<#if components?? && components.mongo??>
 			<dependency>
 				<groupId>com.gofun.ms</groupId>
@@ -93,21 +96,19 @@
 			</#if>
 		</dependencies>
 	</dependencyManagement>
-
-	<!-- 生成SQL的插件的jar在私服上 -->
-	<pluginRepositories>
-		<pluginRepository>
-			<id>nexus_gofun</id>
-			<name>nexus_gofun</name>
-			<url>http://mvn.shouqiev.com:8099/nexus/content/groups/public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
+	
+	<!-- 项目打包成库文件后要上传到什么库地址 -->
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<url>http://mvn.shouqiev.com:8099/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://mvn.shouqiev.com:8099/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<!-- 从什么库地址可以下载项目依赖的库文件 -->
 	<repositories>
 		<repository>
 			<id>Nexus</id>

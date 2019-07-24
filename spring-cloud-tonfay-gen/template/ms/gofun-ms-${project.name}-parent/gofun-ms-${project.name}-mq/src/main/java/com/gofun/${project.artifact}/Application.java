@@ -1,4 +1,4 @@
-package com.gofun.ms.${project.artifact};
+package com.gofun.${project.artifact};
 
 <#if components?? && components.clean_cache??>
 import com.gofun.ms.cachem.EnableCacheMPlus;

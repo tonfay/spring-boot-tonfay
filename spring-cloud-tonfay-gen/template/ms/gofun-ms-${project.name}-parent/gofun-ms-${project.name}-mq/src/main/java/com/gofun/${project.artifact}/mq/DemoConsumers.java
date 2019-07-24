@@ -1,4 +1,4 @@
-package com.gofun.ms.${project.artifact}.mq;
+package com.gofun.${project.artifact}.mq;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
