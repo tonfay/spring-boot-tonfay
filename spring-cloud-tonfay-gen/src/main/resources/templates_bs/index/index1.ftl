@@ -57,7 +57,7 @@
 					<font class="red-font">*</font> 端口号
 				</div>
 				<div class="right">
-					<input type="text" name="" id="" value="8080" placeholder="8080" / class="input3">
+					<input type="text" name="" id="project_port" value="8080" placeholder="8080" / class="input3">
 				</div>
 			</div>
 			<div class="table-box mt20">
