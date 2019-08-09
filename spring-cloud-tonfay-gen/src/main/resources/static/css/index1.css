@@ -1,0 +1,179 @@
+input {
+	outline: none;
+}
+
+html {
+	font-family: sans-serif;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	background: #f7f7f7;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul,
+li,
+p,
+h3,
+h4 {
+	padding: 0;
+	margin: 0;
+}
+
+h1 {
+	font-size: 2em;
+	margin: 0.67em 0;
+}
+
+li {
+	list-style: none;
+}
+
+textarea {
+	overflow: auto;
+	vertical-align: top;
+}
+.red-font{
+	color: #f00;
+}
+.mc{
+	margin:0 auto;
+}
+.content{
+	width: 900px;
+	overflow: hidden;
+	padding: 20px 0 30px 0;
+}
+.content h4{
+	font-size: 18px;
+	line-height: 50px;
+	padding-bottom: 30px;
+}
+.skz{
+	width: 860px;
+    padding-bottom: 55px;
+    overflow: hidden;
+    padding-left: 31px;
+}
+.skz img{
+	float:left;
+}
+.skz span{
+	display: block;
+    width: 371px;
+    height: 2px;
+    background: #626262;
+    float: left;
+    margin-top: 15px;
+}
+.table-box{
+	width: 900px;
+	overflow: hidden;
+}
+.table-box .left{
+	width: 103px;
+	float: left;
+	text-align: right;
+	font-weight: bold;
+	line-height: 40px;
+	font-size: 14px;
+}
+.table-box .right{
+	width: 770px;
+	float: right;
+}
+.table-box .right p{
+	float: left;
+	line-height: 40px;
+	color: #434343;
+}
+.table-box .right span{
+	display: block;
+	float: left;
+}
+.input1{
+	width: 288px;
+	height: 40px;
+	border-radius: 3px;
+	border: 1px solid #949494;
+	padding: 0 10px 0 10px;
+	margin-left: 10px;
+}
+.table-box2{
+	width: 900px;
+	overflow: hidden;
+	padding-top: 20px;
+}
+.table-box2 h4{
+	width: 103px;
+	float: left;
+	text-align: right;
+	line-height: 40px;
+	font-size: 14px;
+	font-weight: bold;
+}
+.table-box2 span{
+	display: block;
+	float: left;
+}
+
+.input2{
+	width: 713px;
+	height: 147px;
+	border-radius: 3px;
+	border: 1px solid #949494;
+	padding: 10px 10px 0 10px;
+	margin-left: 10px;
+}
+.input3{
+	width: 98px;
+	height: 40px;
+	border-radius: 3px;
+	border: 1px solid #949494;
+	padding: 0 10px 0 10px;
+	margin-left: 10px;
+}
+.mt20{
+	margin-top: 20px;
+}
+.msg-label{
+	margin-top: 10px;
+    display: block;
+    float: left;
+    width: 125px;
+    color: #434343;
+}
+.msg-lable2{
+	margin-top: 10px;
+    display: block;
+    float: left;
+    width: 150px;
+    height: 30px;
+    padding-left: 4px;
+    color: #434343;
+}
+.next-btn{
+	margin-left: 140px;
+    width: 735px;
+    height: 55px;
+    background: #335384;
+    color: #fff;
+    font-size: 16px;
+    border: 0;
+    border-radius: 3px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    cursor:pointer;
+    
+}
+.next-btn:hover{
+	background: #1e3e6f;
+	color: #fff;
+}
+
