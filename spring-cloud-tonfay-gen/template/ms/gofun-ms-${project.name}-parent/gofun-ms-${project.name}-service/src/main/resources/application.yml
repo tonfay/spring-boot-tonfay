@@ -1,5 +1,5 @@
 server:
-  port: 9666
+  port: ${project.port?"9666"}
   context-path: /
   tomcat:
     max-threads: 800
