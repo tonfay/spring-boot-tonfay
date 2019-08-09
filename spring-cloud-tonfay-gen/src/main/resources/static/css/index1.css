@@ -88,6 +88,31 @@ textarea {
 	width: 770px;
 	float: right;
 }
+.right-box{
+	width: 733px;
+	border-radius: 3px;
+	background: #fff;
+	border: 1px solid #ccc;
+	overflow: hidden;
+	margin-left: 10px;
+}
+.right-box .top{
+	height: 40px;
+	border-bottom: 1px solid #ccc;
+	line-height: 40px;
+	width: 750px;
+	margin-left: 10px;
+	font-weight: bold;
+	color: #434343;
+	font-size: 14px;
+}
+.right-box .bottom{
+	padding-bottom: 15px;
+	overflow: hidden;
+}
+.mt10{
+	margin-top: 10px;
+}
 .table-box .right p{
 	float: left;
 	line-height: 40px;

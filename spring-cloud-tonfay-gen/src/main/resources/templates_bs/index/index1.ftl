@@ -65,12 +65,27 @@
 					<font class="red-font">*</font> 项目组件 
 				</div>
 				<div class="right">
-					<label class="msg-lable2"><input name="components" type="checkbox" value="mongo" />Mongo </label> 
-					<label class="msg-lable2"><input name="components" type="checkbox" value="redis" />Redis </label> 
-					<label class="msg-lable2"><input name="components" type="checkbox" value="mysql" />Mysql </label> 
-					<label class="msg-lable2"><input name="components" type="checkbox" value="mq" />RocketMQ </label> 
-					<label class="msg-lable2"><input name="components" type="checkbox" value="cache" />Cache </label>
-					<label class="msg-lable2"><input name="components" type="checkbox" value="clear_cache" />ClearCache </label> 
+					
+					<div class="right-box">
+						<div class="top">
+							数据库
+						</div>
+						<div class="bottom">
+							<label class="msg-lable2"><input name="components" type="checkbox" value="mongo" />Mongo </label>
+							<label class="msg-lable2"><input name="components" type="checkbox" value="redis" />Redis </label>
+							<label class="msg-lable2"><input name="components" type="checkbox" value="mysql" />Mysql </label>
+						</div>
+					</div>
+					<div class="right-box mt10">
+						<div class="top">
+							中间件
+						</div>
+						<div class="bottom">
+							<label class="msg-lable2"><input name="components" type="checkbox" value="mq" />RocketMQ </label>
+							<label class="msg-lable2"><input name="components" type="checkbox" value="cache" />Cache </label>
+							<label class="msg-lable2"><input name="components" type="checkbox" value="clear_cache" />ClearCache </label>
+						</div>
+					</div>
 				</div>
 			</div>
 			<button class="next-btn" onclick="gen()">Generate Project</button>
