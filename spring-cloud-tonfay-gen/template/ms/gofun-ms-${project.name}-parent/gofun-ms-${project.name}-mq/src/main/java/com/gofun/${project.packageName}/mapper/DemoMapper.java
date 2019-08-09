@@ -1,4 +1,4 @@
-package com.gofun.ms.${project.packageName}.mapper;
+package com.gofun.${project.packageName}.mapper;
 
 public class DemoMapper {
 
