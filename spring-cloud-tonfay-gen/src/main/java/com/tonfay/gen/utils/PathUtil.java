@@ -45,4 +45,46 @@ public class PathUtil {
 		String courseFile = directory.getCanonicalPath();
 		return courseFile;
 	}
+	
+	/**
+	 * 删除文件夹
+	 * @param folder
+	 * @return
+	 */
+	public static boolean delFile(String folder) {
+		File file = new File(folder);
+        if (!file.exists()) {
+            return false;
+        }
+
+        if (file.isFile()) {
+            return file.delete();
+        } else {
+            File[] files = file.listFiles();
+            for (File f : files) {
+                delFile(f);
+            }
+            return file.delete();
+        }
+    }
+	/**
+	 * 删除文件夹
+	 * @param file
+	 * @return
+	 */
+	public static boolean delFile(File file) {
+        if (!file.exists()) {
+            return false;
+        }
+
+        if (file.isFile()) {
+            return file.delete();
+        } else {
+            File[] files = file.listFiles();
+            for (File f : files) {
+                delFile(f);
+            }
+            return file.delete();
+        }
+    }
 }

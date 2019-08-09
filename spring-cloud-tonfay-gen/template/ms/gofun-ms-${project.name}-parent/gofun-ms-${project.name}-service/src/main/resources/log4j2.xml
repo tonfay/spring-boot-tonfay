@@ -72,6 +72,6 @@ fatal： 级别比较高了。重大错误，这种级别你可以直接停止�
         <logger name="org.mybatis" level="INFO"></logger>
         <logger name="org.apache.http" level="INFO" />
         <logger name="com.netflix" level="INFO" />
-        <logger name="com.gofun.ms.${project.artifact}.mapper" level="INFO" />
+        <logger name="com.gofun.ms.${project.packageName}.mapper" level="INFO" />
     </Loggers>
 </Configuration>

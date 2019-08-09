@@ -19,6 +19,6 @@ public class IndexController {
 		ComponentsEnum[] vs = ComponentsEnum.values();
 		String c = Arrays.toString(vs);
 		model.addAttribute("list", c.replaceAll("\\[", "").replaceAll("\\]", ""));
-		return "index/index";
+		return "index/index1";
 	}
 }

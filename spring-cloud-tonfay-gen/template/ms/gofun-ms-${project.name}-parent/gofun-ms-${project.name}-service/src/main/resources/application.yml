@@ -11,6 +11,8 @@ spring:
     active: prod  ##设置logback-spring中日志显示
   application:
     name: gofun-ms-${project.name}-service
+<#if components?? && components.mysql??>
+<#else>
   datasource:
     name: gofun-ms-${project.name}-service_DS
     type: com.zaxxer.hikari.HikariDataSource
@@ -26,6 +28,7 @@ spring:
       idleTimeout: 600000  #连接空闲时间
       maxLifetime: 1800000 #一个连接的存活时长ms 30分钟
       connectionTimeout: 10000 #获取连接最大等待时长 30s
+</#if>
 <#if components?? && components.mongo??>
   data:
     mongodb:
