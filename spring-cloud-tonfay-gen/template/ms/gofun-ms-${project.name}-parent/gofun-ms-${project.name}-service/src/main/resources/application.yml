@@ -1,5 +1,9 @@
 server:
-  port: ${project.port?"9666"}
+  <#if project.port??>
+    port: ${project.port}
+  <#else>
+    port: 9666
+  </#if>
   context-path: /
   tomcat:
     max-threads: 800
