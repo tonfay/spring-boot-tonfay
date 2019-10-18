@@ -2,11 +2,8 @@ Manifest-Version: 1.0
 Implementation-Title: spring-boot-tonfay-cache
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: LENOVO
-Specification-Vendor: Pivotal Software, Inc.
-Specification-Title: spring-boot-tonfay-cache
 Implementation-Vendor-Id: com.tonfay
 Build-Jdk: 1.8.0_40
-Specification-Version: 0.0.1-SNAPSHOT
 Implementation-URL: http://projects.spring.io/spring-boot/spring-boot-
  tonfay/spring-boot-tonfay-cache/
 Created-By: Maven Integration for Eclipse
