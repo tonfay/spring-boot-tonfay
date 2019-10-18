@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.alibaba.fastjson.JSON;
+import com.gofun.ms.interfaces.StorageRMI;
 import com.tonfay.gen.config.MsConfigProperties;
 import com.tonfay.gen.enums.ComponentsEnum;
 import com.tonfay.gen.model.Components;
@@ -44,6 +46,13 @@ public class GenMSRest {
 	Logger logger = LoggerFactory.getLogger(GenMSRest.class);
 	@Autowired
 	MsConfigProperties msConfigProperties;
+	@Autowired
+	StorageRMI storageRmi;
+	@RequestMapping(value = "/oss/ms", method = RequestMethod.GET)
+	public void ms_oss() {
+//		storageRmi.resourceUpload(arg0, arg1, arg2);
+		
+	}
 	@RequestMapping(value = "/ms", method = RequestMethod.GET)
 	public void ms(
 			@RequestParam(required = true) String projectName,
@@ -70,7 +79,7 @@ public class GenMSRest {
 			//do
 			execute(root, templateDir, outDir);
 			
-			//删除无用文件夹
+			//TODO 删除无用文件夹
 //			PathUtil.delFile(outDir+"");
 			
 			
@@ -95,7 +104,7 @@ public class GenMSRest {
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(HttpServletResponse response) throws IOException {
-		String list = ComponentsEnum.values().toString();
+		String list = JSON.toJSONString(ComponentsEnum.values());
 		return list;
 	}
 
@@ -103,33 +112,6 @@ public class GenMSRest {
 			File templateBaseDir = new File(templateDir);
 			//获取所有的目录及文件的相对目录
 			List<File> srcFiles = FileHelper.searchAllNotIgnoreFile(templateBaseDir);
-			/*//删除未选中功能的文件夹begin
-			Components components = (Components) root.get("components");
-			MQInfo mq = (MQInfo) components.get(MQInfo.name());
-			CacheInfo cacheInfo = (CacheInfo) components.get(CacheInfo.name());
-			CleanCacheInfo cleanCacheInfo = (CleanCacheInfo) components.get(CleanCacheInfo.name());
-			MongoInfo mongoInfo = (MongoInfo) components.get(MongoInfo.name());
-			MysqlInfo mysqlInfo = (MysqlInfo) components.get(MysqlInfo.name());
-			RedisInfo redisInfo = (RedisInfo) components.get(RedisInfo.name());
-			for(int i = 0; i < srcFiles.size(); i++) {
-				File srcFile = (File)srcFiles.get(i);
-				if(mq == null && srcFile.getPath().toLowerCase().contains(MQInfo.name().toLowerCase())) {
-					srcFiles.remove(i);
-					System.out.println(srcFile.getPath().toLowerCase());
-				}else if(cacheInfo == null && srcFile.getName().contains(CacheInfo.name())) {
-					srcFiles.remove(i);
-				}else if(cleanCacheInfo == null && srcFile.getName().contains(CleanCacheInfo.name())) {
-					srcFiles.remove(i);
-				}else if(mongoInfo == null && srcFile.getName().contains(MongoInfo.name())) {
-					srcFiles.remove(i);
-				}else if(mysqlInfo == null && srcFile.getName().contains(MysqlInfo.name())) {
-					srcFiles.remove(i);
-				}else if(redisInfo == null && srcFile.getName().contains(RedisInfo.name())) {
-					srcFiles.remove(i);
-				}
-			}
-			//删除未选中功能的文件夹end
-*/			
 			for(int i = 0; i < srcFiles.size(); i++) {
 				File srcFile = (File)srcFiles.get(i);
 				//获取每一个file的相对路径
