@@ -48,6 +48,7 @@ public class GenMSRest {
 	MsConfigProperties msConfigProperties;
 	@Autowired
 	StorageRMI storageRmi;
+	
 	@RequestMapping(value = "/oss/ms", method = RequestMethod.GET)
 	public void ms_oss() {
 //		storageRmi.resourceUpload(arg0, arg1, arg2);
