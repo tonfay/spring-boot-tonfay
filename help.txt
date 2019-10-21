@@ -1,3 +1,9 @@
 1.新建分支,并本地推送到github服务端
     git branch 分支名
 	git push origin 分支名
+
+2.修改文件并add到当前序列
+    git add 文件名||.
+
+3.修改当前修改msg并提交本地仓库
+    git commit -m "消息体"
